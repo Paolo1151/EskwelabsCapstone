@@ -109,7 +109,7 @@ class COSMO:
 
     @staticmethod
     def get_train():
-        return pd.read_csv(os.getcwd() + '\\pages\\OutlierFree.csv', index_col=0)
+        return pd.read_csv(os.getcwd() + '/pages/OutlierFree.csv', index_col=0)
 
     def get_raw(self):
         return self.raw_df
@@ -186,17 +186,17 @@ class COSMO:
                
     @staticmethod
     def get_COS():
-        model = joblib.load(os.getcwd()+'\\pages\\models\\COS.joblib')
+        model = joblib.load(os.getcwd()+'/pages/models/COS.joblib')
         return model
 
     @staticmethod
     def get_MO():
-        model = joblib.load(os.getcwd()+'\\pages\\models\\MO.joblib')
+        model = joblib.load(os.getcwd()+'/pages/models/MO.joblib')
         return model
 
     @staticmethod
     def get_type_decoder():
-        le = joblib.load(os.getcwd()+'\\pages\\models\\PlanetLabelEncoder.joblib')
+        le = joblib.load(os.getcwd()+'/pages/models/PlanetLabelEncoder.joblib')
         return le
 
     @staticmethod
@@ -208,9 +208,9 @@ class COSMO:
     @staticmethod
     def get_transformers(transform_code):
         if transform_code == 'd':
-            return joblib.load(os.getcwd()+'\\pages\\models\\DispositionPowerTransformers.joblib')
+            return joblib.load(os.getcwd()+'/pages/models/DispositionPowerTransformers.joblib')
         elif transform_code == 't':
-            return joblib.load(os.getcwd()+'\\pages\\models\\TypePowerTransformers.joblib')
+            return joblib.load(os.getcwd()+'/pages/models/TypePowerTransformers.joblib')
         else:
             raise Exception("Invalid transformer code! only t and d is allowed!")
 
