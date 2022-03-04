@@ -23,25 +23,7 @@ def main():
     if 'fill' not in st.session_state:
         st.session_state['fill'] = False
 
-    page_list = [
-        'COSMO Dashboard',
-        'Data Exploration',
-        'About COSMO',
-        'Credits'
-    ]
-
-    with st.sidebar:
-        st.subheader("Pages")
-        page = st.radio("Pages", page_list)
-
-    if page == 'COSMO Dashboard':
-        cosmo.render()
-    elif page == 'Data Exploration':
-        explore.render()
-    elif page == 'About COSMO':
-        about.render()
-    elif page == 'Credits':
-        credits.render()
+    cosmo.render()
 
 if __name__ == '__main__':
     main()
