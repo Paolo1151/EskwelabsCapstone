@@ -7,6 +7,8 @@ import numpy as np
 import joblib
 import os
 
+FILE_PATH = os.path.dirname(__file__)
+
 class COSMO:
     NEWTONG = 6.67e-11
     STEPBOLTS = 5.670e-8
@@ -43,8 +45,6 @@ class COSMO:
             self.planet_prob_df = self.planet_prob_df[['ObjectOfInterest', 'P(Gas Giant)', 'P(Neptune-like)', 'P(Super Earth)', 'P(Terrestrial)']].set_index('ObjectOfInterest')
 
         self.results_df = self.results_df.set_index('ObjectOfInterest')
-
-        print(os.path.dirname(__file__))
 
     def preprocess(self, df):
         # Generate the dis_df
@@ -111,7 +111,7 @@ class COSMO:
 
     @staticmethod
     def get_train():
-        return pd.read_csv(os.path.join(os.path.dirname(__file__), '/OutlierFree.csv'), index_col=0)
+        return pd.read_csv(os.getcwd()+'/pages/OutlierFree.csv', index_col=0)
 
     def get_raw(self):
         return self.raw_df
@@ -188,17 +188,17 @@ class COSMO:
                
     @staticmethod
     def get_COS():
-        model = joblib.load(os.path.join(os.path.dirname(__file__), '/models/COS.joblib'))
+        model = joblib.load(os.getcwd()+'/pages/models/COS.joblib')
         return model
 
     @staticmethod
     def get_MO():
-        model = joblib.load(os.path.join(os.path.dirname(__file__), '/models/MO.joblib'))
+        model = joblib.load(os.getcwd()+'/pages/models/MO.joblib')
         return model
 
     @staticmethod
     def get_type_decoder():
-        le = joblib.load(os.path.join(os.path.dirname(__file__), '/models/PlanetLabelEncoder.joblib'))
+        le = joblib.load(os.getcwd()+'/pages/models/PlanetLabelEncoder.joblib')
         return le
 
     @staticmethod
@@ -210,9 +210,9 @@ class COSMO:
     @staticmethod
     def get_transformers(transform_code):
         if transform_code == 'd':
-            return joblib.load(os.path.join(os.path.dirname(__file__), '/models/DispositionPowerTransformers.joblib'))
+            return joblib.load(os.getcwd()+'/pages/models/DispositionPowerTransformers')
         elif transform_code == 't':
-            return joblib.load(os.path.join(os.path.dirname(__file__), '/models/TypePowerTransformers.joblib'))
+            return joblib.load(os.getcwd()+'/pages/models/TypePowerTransformers.joblib')
         else:
             raise Exception("Invalid transformer code! only t and d is allowed!")
 
