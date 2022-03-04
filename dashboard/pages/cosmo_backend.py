@@ -210,7 +210,7 @@ class COSMO:
     @staticmethod
     def get_transformers(transform_code):
         if transform_code == 'd':
-            return joblib.load(os.getcwd()+'/pages/models/DispositionPowerTransformers')
+            return joblib.load(os.getcwd()+'/pages/models/DispositionPowerTransformers.joblib')
         elif transform_code == 't':
             return joblib.load(os.getcwd()+'/pages/models/TypePowerTransformers.joblib')
         else:
